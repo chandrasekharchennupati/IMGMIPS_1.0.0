@@ -55,7 +55,6 @@ ble_ll_hci_cmd_rx(uint8_t *cmd, void *arg)
     memcpy(tcmd + 1, cmd, sizeBytes);
  
     BLELL_LOG(DEBUG, "DATA Received FROM HOST : \n");
-    printf("DATA Received FROM HOST : \n");
     {
        int i;
        BLELL_LOG(DEBUG,"COMMAND DATA Received from HOST for Tx: \n");
@@ -67,7 +66,6 @@ ble_ll_hci_cmd_rx(uint8_t *cmd, void *arg)
     fd = open(FILE_NAME, O_WRONLY, S_IWUSR | S_IRUSR);
     noBytes = write(fd,(void *)tcmd, sizeBytes);
     BLELL_LOG(DEBUG, "NO OF BYTES written to Controller %d\n", noBytes);
-    printf("NO OF BYTES written to Controller %d %x %x %x %x %x %x \n", noBytes, tcmd[0], tcmd[1], tcmd[2], tcmd[3], tcmd[4],tcmd[5]);
 
     if(noBytes < 0)
       BLELL_LOG(DEBUG, " WRITE ERROR : Error while writing to device\n");
