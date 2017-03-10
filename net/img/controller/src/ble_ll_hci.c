@@ -29,8 +29,9 @@
 #include "nimble/ble_hci_trans.h"
 #include "controller/ble_ll.h"
 
+#define FILE_NAME "/dev/ttyHS0"
 //#define FILE_NAME "/home/krishnab/bt_krishna_p4/ensigma/sw/connectivity/whisper/MAIN/bt/support/HCI_TRANSPORT/source/bash/topDevice"
-#define FILE_NAME "/home/krishnab/bt_p4_240117/ensigma/sw/connectivity/whisper/DEV/BASE/commsStacks/bt/support/HCI_TRANSPORT/source/bash/topDevice"
+//#define FILE_NAME "/home/krishnab/bt_p4_240117/ensigma/sw/connectivity/whisper/DEV/BASE/commsStacks/bt/support/HCI_TRANSPORT/source/bash/topDevice"
 
 /* Need to move these to a header file */
 #define H4_CMD                   1
@@ -59,7 +60,9 @@ ble_ll_hci_cmd_rx(uint8_t *cmd, void *arg)
        int i;
        BLELL_LOG(DEBUG,"COMMAND DATA Received from HOST for Tx: \n");
        for(i=0; i < sizeBytes; i++)
+       {
           BLELL_LOG(DEBUG, "%x ", cmd[i]);
+       }
        BLELL_LOG(DEBUG, "\n\n");
     }
 
